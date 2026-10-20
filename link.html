@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>重走长征路 · 长征胜利90周年数字作品</title>
+<meta name="description" content="纪念中国工农红军长征胜利90周年 · 长征主题数字创意 H5">
+<style>
+:root{
+  --paper:#E9E2D2; --paper-deep:#DED5C0; --paper-lit:#F4EFE3;
+  --ink:#2E2A24; --ink-soft:#5A5245; --ink-faint:#8C8272;
+  --seal:#8E2B24; --seal-deep:#6B1F1A; --brass:#96762F;
+  --line:#B9AE97; --line-soft:#CDC4B0;
+  --serif:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun","STSong",serif;
+  --sans:"Source Han Sans SC","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.75;
+  -webkit-font-smoothing:antialiased;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;padding:26px 20px;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='0.16'/></svg>");
+}
+.card{position:relative;z-index:1;width:100%;max-width:680px}
+
+.ribbon{
+  display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:.22em;
+  color:var(--seal);border:1px solid var(--seal);padding:3px 11px 3px 13px;margin-bottom:22px;
+}
+h1{font-size:clamp(26px,5.4vw,40px);font-weight:600;letter-spacing:.05em;line-height:1.32}
+h1 .red{color:var(--seal)}
+.sub{
+  margin-top:12px;font-family:var(--sans);font-size:clamp(12.5px,2.7vw,14px);
+  color:var(--ink-soft);letter-spacing:.08em;
+}
+.rule{height:1px;background:var(--line);margin:26px 0 22px}
+
+.lead{font-size:clamp(14px,3vw,15.5px);line-height:2.05;color:var(--ink-soft)}
+.lead b{color:var(--ink);font-weight:600}
+
+/* 链接区 */
+.linkbox{
+  margin-top:24px;border:1px solid var(--seal);background:var(--paper-lit);
+  padding:18px 20px 20px;
+}
+.linkbox .lb-h{
+  font-family:var(--sans);font-size:11px;letter-spacing:.18em;color:var(--seal);
+  font-weight:600;margin-bottom:9px;
+}
+#live{
+  font-family:var(--sans);font-size:clamp(15px,3.6vw,20px);font-weight:600;
+  color:var(--seal-deep);word-break:break-all;line-height:1.55;
+  border-bottom:2px solid var(--seal);display:inline-block;padding-bottom:3px;
+  text-decoration:none;
+}
+#live:hover{color:var(--ink);border-color:var(--ink)}
+.linkbox p{
+  margin-top:11px;font-family:var(--sans);font-size:12px;color:var(--ink-faint);line-height:1.9;
+}
+.copy{
+  appearance:none;border:1px solid var(--line);background:var(--paper);
+  font-family:var(--sans);font-size:12px;color:var(--ink-soft);cursor:pointer;
+  padding:7px 14px;margin-top:13px;letter-spacing:.05em;transition:background .18s,color .18s,border-color .18s;
+}
+.copy:hover{background:var(--paper-deep);color:var(--seal);border-color:var(--seal)}
+.copy.done{background:rgba(142,43,36,.1);color:var(--seal);border-color:var(--seal)}
+
+/* 入口按钮 */
+.go{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  margin-top:14px;border:1px solid var(--line);background:var(--paper-deep);
+  padding:16px 20px;text-decoration:none;color:var(--ink);transition:background .18s;
+}
+.go:hover{background:var(--paper-lit)}
+.go span{font-size:clamp(15px,3.2vw,17px);font-weight:600;letter-spacing:.04em}
+.go i{
+  font-style:normal;color:var(--seal);font-size:20px;transition:transform .18s;
+}
+.go:hover i{transform:translateX(5px)}
+.go small{
+  display:block;font-family:var(--sans);font-size:11.5px;color:var(--ink-faint);
+  font-weight:400;margin-top:3px;letter-spacing:.02em;
+}
+
+.hint{
+  margin-top:22px;font-family:var(--sans);font-size:11.5px;line-height:1.95;
+  color:var(--ink-faint);border-top:1px dashed var(--line);padding-top:14px;
+}
+.hint b{color:var(--ink-soft);font-weight:600}
+.sig{
+  margin-top:26px;font-family:var(--sans);font-size:11px;color:var(--ink-faint);
+  letter-spacing:.06em;
+}
+
+/* 倒计时提示 */
+.auto{
+  margin-top:14px;font-family:var(--sans);font-size:12px;color:var(--ink-faint);
+  opacity:0;transition:opacity .4s;
+}
+.auto.on{opacity:1}
+
+@media(max-width:520px){
+  .linkbox{padding:15px 16px 17px}
+  .go{padding:14px 16px}
+}
+</style>
+</head>
+<body>
+<div class="card">
+
+  <span class="ribbon">1934 — 1936</span>
+  <h1>重走长征路<br><span class="red">弘扬伟大长征精神</span></h1>
+  <p class="sub">纪念中国工农红军长征胜利 90 周年 · 长征主题数字创意作品</p>
+
+  <div class="rule"></div>
+
+  <p class="lead">
+    本作品是一份<b>交互式数字地图</b>：以十五处关键地点为线索，串联长征全流程，
+    含手绘史图式路线、逐处史料详情、史实题问与行程年表，
+    并收录<b>中国国家博物馆官方馆藏文物</b>十六件。
+  </p>
+
+  <div class="linkbox">
+    <div class="lb-h">作 品 地 址</div>
+    <a id="live" href="#">加载中…</a>
+    <p>请用浏览器（Chrome / Edge / Safari / 手机浏览器）打开；微信内建议点右上角「在浏览器打开」。</p>
+    <button class="copy" id="copyBtn" type="button">复制链接</button>
+  </div>
+
+  <a class="go" id="goLink" href="index.html">
+    <span>进入作品<small>点击开始浏览 · 支持鼠标与触屏</small></span>
+    <i>→</i>
+  </a>
+
+  <p class="auto" id="autoTip"></p>
+
+  <p class="hint">
+    <b>说明</b>　作品为单页应用，全部内容在这一个页面内，通过点击地图节点、年表或「下一处」按钮浏览。
+    如遇页面显示不全，请刷新一次。
+  </p>
+
+  <p class="sig">作者　<span data-sig></span>　·　纪念中国工农红军长征胜利九十周年</p>
+
+</div>
+
+<script>
+(function(){
+  /* ---------- 1. 自动推导本页公网地址 ----------
+     部署到 GitHub Pages 后，hostname 形如 <用户名>.github.io 或 <用户名>.github.io/仓库名
+     直接取浏览器地址栏，去掉文件名，即为可提交的链接。 */
+  var loc = location;
+  var path = loc.pathname.replace(/[^/]*$/, '');   // 去掉 link.html / index.html
+  var live = loc.protocol + '//' + loc.host + path;
+  var isLocal = (loc.protocol === 'file:') ||
+                loc.hostname === '127.0.0.1' ||
+                loc.hostname === 'localhost' ||
+                loc.hostname === '::1';
+
+  var el = document.getElementById('live');
+  var goLink = document.getElementById('goLink');
+
+  if(isLocal){
+    /* 本地双击打开：显示提示，不显示假链接 */
+    el.textContent = '本地文件模式';
+    el.removeAttribute('href');
+    el.style.borderBottom = '0';
+    el.style.color = 'var(--ink-faint)';
+    el.style.fontSize = '15px';
+    document.getElementById('copyBtn').style.display = 'none';
+    document.querySelector('.lb-h').textContent = '当 前 状 态';
+    document.querySelector('.linkbox p').textContent =
+      '你正在本地打开此文件。部署到 GitHub Pages 后，这里会自动显示可提交给老师的公网网址。';
+  } else {
+    el.textContent = live;
+    el.href = live;
+    goLink.href = 'index.html';
+
+    /* 复制按钮 */
+    var btn = document.getElementById('copyBtn');
+    btn.addEventListener('click', function(){
+      var done = function(){
+        btn.textContent = '已复制';
+        btn.classList.add('done');
+        setTimeout(function(){ btn.textContent = '复制链接'; btn.classList.remove('done'); }, 2000);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(live).then(done, fallback);
+      } else { fallback(); }
+      function fallback(){
+        var t = document.createElement('textarea');
+        t.value = live; t.style.position = 'fixed'; t.style.opacity = '0';
+        document.body.appendChild(t); t.select();
+        try{ document.execCommand('copy'); done(); }catch(e){}
+        document.body.removeChild(t);
+      }
+    });
+  }
+
+  /* ---------- 2. 作者署名 ----------
+     不在源码中以明文出现，运行时由字符码拼出。 */
+  var name = String.fromCharCode(0x6587,0x58A8,0x6DB5);
+  var num = ['2','6','0','7','1','0','3','5'].join('');
+  document.querySelectorAll('[data-sig]').forEach(function(n){
+    n.textContent = name + '\u2009' + num;
+    n.style.userSelect = 'none';
+  });
+
+  /* ---------- 3. 三秒后提示可直接进入 ---------- */
+  if(!isLocal){
+    var tip = document.getElementById('autoTip');
+    tip.textContent = '3 秒后自动进入作品，或点击上方「进入作品」。';
+    tip.classList.add('on');
+    setTimeout(function(){ location.href = 'index.html'; }, 3000);
+  }
+})();
+</script>
+</body>
+</html>
